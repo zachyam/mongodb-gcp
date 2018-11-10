@@ -2,26 +2,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zach-webserver
+  name: hello-mongo
   namespace: default
   labels:
-    app: zach-webserver
+    app: hello-mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: zach-webserver
+      app: hello-mongo
   template:
     metadata:
       labels:
-        app: zach-webserver
+        app: hello-mongo
     spec:
       containers:
-      - name: zach-webserver
-        image: eu.gcr.io/zachy-dev/zach-webserver:1
+      - name: hello-mongo
+        image: us.gcr.io/zachy-dev/hello-mongo:v3
         ports:
         - name: http
           containerPort: 8000
+        env:
         - name: PYTHONBUFFERED
           value: "0"
         resources:
